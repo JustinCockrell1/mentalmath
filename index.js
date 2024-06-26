@@ -145,7 +145,7 @@ function nextQuestion() {
         return;
     }
 
-    pastDisplay.innerHTML += `<li>${count}: ${n1} ${op} ${n2}</li>`;
+    
     n1 = genRandom(options.num1Min, options.num1Max);
     if(options.same) {
         n2 = n1;
@@ -200,6 +200,7 @@ function checkAnswer(e) {
     // console.log(line);
 
     if(line==answer) {
+        pastDisplay.innerHTML += `<li>${count}: ${n1} ${op} ${n2}</li>`;
         nextQuestion();
 
     }
