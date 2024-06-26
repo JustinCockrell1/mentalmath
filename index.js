@@ -1,6 +1,8 @@
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
+// process.stdin.resume();
+// process.stdin.setEncoding('utf8');
 
+const problemDisplay = document.getElementById("problems");
+const answerInput = document.getElementById("answer");
 
 const allOps = ["+","-", "/", "*"];
 
@@ -97,6 +99,8 @@ let answer = '0';
 let count = 0;
 let startTime = 0;
 
+let numDigits = 1;
+
 //2 digit addition
 //3 digit addition
 //2 digit subtraction
@@ -107,7 +111,7 @@ let startTime = 0;
 
 function genRandom(n1, n2) {
     const diff = (n2-n1)+1;
-    const numDigits = Math.floor(Math.random()*diff+n1);
+    numDigits = Math.floor(Math.random()*diff+n1);
     // console.log(diff, numDigits);
     let num = 0;
     for(let i = 0; i < numDigits; i++) {
@@ -164,7 +168,8 @@ function nextQuestion() {
 }
 
 function displayQuestion() {
-    console.log(`${count}:`, n1, op, n2, "=");
+    problemDisplay.innerHTML = `${count}: ${n1} ${op} ${n2}`
+    // console.log(`${count}:`, n1, op, n2, "=");
 }
 
 function endGame() {
@@ -174,7 +179,15 @@ function endGame() {
     console.log("seconds", seconds);
 }
 
-process.stdin.on("data", (e)=>{
+
+answerInput.oninput = function(e) {
+    const a = answerInput.value;
+    if(a.length >= answer.length) {
+        checkAnswer(a);
+    }
+}
+
+function checkAnswer(e) {
     const line = e.trim();
     if(started) {
     
@@ -187,6 +200,7 @@ process.stdin.on("data", (e)=>{
         console.log("you are 10 ply bud");
         displayQuestion();
     }
+
     }
     else {
         const choice = Number(line);
@@ -197,7 +211,33 @@ process.stdin.on("data", (e)=>{
             start()
         }
     }
-})
+    answerInput.value = "";
+}
+
+// process.stdin.on("data", (e)=>{
+//     const line = e.trim();
+//     if(started) {
+    
+//     // console.log(line);
+
+//     if(line==answer) {
+//         nextQuestion();
+//     }
+//     else {
+//         console.log("you are 10 ply bud");
+//         displayQuestion();
+//     }
+//     }
+//     else {
+//         const choice = Number(line);
+//         console.log(choice);
+//         if(choice>=0 && choice<possibleOptions.length) {
+//             options = possibleOptions[choice];
+            
+//             start()
+//         }
+//     }
+// })
 
 function init() {
     for(let i = 0; i < possibleOptions.length; i++) {
