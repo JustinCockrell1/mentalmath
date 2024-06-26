@@ -1,7 +1,8 @@
 // process.stdin.resume();
 // process.stdin.setEncoding('utf8');
 
-const problemDisplay = document.getElementById("problems");
+const problemDisplay = document.getElementById("currentProblem");
+const pastDisplay = document.getElementById("problems");
 const answerInput = document.getElementById("answer");
 
 const allOps = ["+","-", "/", "*"];
@@ -135,6 +136,8 @@ function getRandomOp() {
 
 
 function nextQuestion() {
+    pastDisplay.innerHTML += `<li>${count}: ${n1} ${op} ${n2}</li>`;
+    
     count++;
     if(count>=20) {
         endGame();
@@ -195,6 +198,7 @@ function checkAnswer(e) {
 
     if(line==answer) {
         nextQuestion();
+
     }
     else {
         console.log("you are 10 ply bud");
