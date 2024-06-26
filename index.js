@@ -4,6 +4,7 @@
 const problemDisplay = document.getElementById("currentProblem");
 const pastDisplay = document.getElementById("problems");
 const answerInput = document.getElementById("answer");
+const optionsDiv = document.getElementById("options")
 
 const allOps = ["+","-", "/", "*"];
 
@@ -246,6 +247,14 @@ function checkAnswer(e) {
 function init() {
     for(let i = 0; i < possibleOptions.length; i++) {
         console.log(possibleOptions[i].name, i);
+        optionsDiv.innerHTML += `<button class="option-choice">${possibleOptions[i].name}</button>`
+    }
+    const optionDivs = document.querySelectorAll(".option-choice");
+    for(let i = 0; i < optionDivs.length; i++) {
+        optionDivs[i].onclick = function() {
+            options = possibleOptions[i];
+            start();
+        }
     }
     console.log("choose an option");
 }
@@ -254,6 +263,8 @@ function init() {
 
 function start() {
 started = true;
+count = 0;
+pastDisplay.innerHTML = "";
 startTime = Date.now();
 nextQuestion();
 }
