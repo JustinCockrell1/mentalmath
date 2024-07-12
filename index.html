@@ -3,33 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MentalMath</title>
-</head>
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
 <body>
-    <div>
-        <h1>Presets</h1>
-        <div id="options"></div>
-        <div id="custom">custom
-            <div id="allowedoperators">
-                <form action="">
-                    <p>allowed operators:</p>
-                    +<input type="checkbox" id="add"> <br>
-                    -<input type="checkbox" id="subtract"><br>
-                    x<input type="checkbox" id="multiply"><br>
-                    /<input type="checkbox" id="divide"><br>
-                    ^2<input type="checkbox" id="square"><br>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div id="currentProblem">
-
-    </div>
-    <input type="number" inputmode="numeric" id="answer">
-    <ul id="problems">
-        
-    </ul>
-
-    <script src="index.js"></script>
+    <div class="container">
+        <h1>Mental Math</h1>
+        <h2>Enter your email to receive updates</h2>
+    <form
+    action="https://formspree.io/f/xeojoeke"
+    method="POST"
+  >
+    <label>
+      Your email:
+      <input type="email" name="email">
+    </label>
+    <label>
+      Your message:
+      <textarea name="message"></textarea>
+    </label>
+    <!-- your other form fields go here -->
+    <button type="submit">Send</button>
+  </form>
+</div>
 </body>
 </html>
