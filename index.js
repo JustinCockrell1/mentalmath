@@ -7,6 +7,8 @@ const answerInput = document.getElementById("answer");
 const optionsDiv = document.getElementById("options");
 const alertsDiv = document.getElementById("alerts");
 
+
+
 const allOps = ["+","-", "/", "*"];
 
 let options = {
@@ -184,7 +186,7 @@ function nextQuestion() {
 }
 
 function displayQuestion() {
-    problemDisplay.innerHTML = `${count}: ${n1} ${op} ${n2}`
+    problemDisplay.innerHTML = `${n1} ${op} ${n2} =`
     // console.log(`${count}:`, n1, op, n2, "=");
 }
 
@@ -211,7 +213,7 @@ function checkAnswer(e) {
     // console.log(line);
 
     if(line==answer) {
-        pastDisplay.innerHTML += `<li>${count}: ${n1} ${op} ${n2}</li>`;
+        pastDisplay.innerHTML += `<li>${count}: ${n1} ${op} ${n2} = ${answer}</li>`;
         nextQuestion();
 
     }
@@ -260,18 +262,12 @@ function checkAnswer(e) {
 // })
 
 function init() {
-    for(let i = 0; i < possibleOptions.length; i++) {
-        console.log(possibleOptions[i].name, i);
-        optionsDiv.innerHTML += `<button class="option-choice">${possibleOptions[i].name}</button>`
-    }
-    const optionDivs = document.querySelectorAll(".option-choice");
-    for(let i = 0; i < optionDivs.length; i++) {
-        optionDivs[i].onclick = function() {
-            options = possibleOptions[i];
-            start();
-        }
-    }
-    console.log("choose an option");
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('type');
+    options = possibleOptions[myParam];
+    // alert(myParam);
+    answerInput.focus();
+    start();
 }
 
 

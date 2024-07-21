@@ -8,33 +8,17 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
   />
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/mentalmath.css">
 </head>
 <body>
-    <div>
-        <h1>Presets</h1>
-        <div id="alerts"></div>
-        <div id="options"></div>
-        <div id="custom">custom
-            <div id="allowedoperators">
-                <form action="">
-                    <p>allowed operators:</p>
-                    +<input type="checkbox" id="add"> <br>
-                    -<input type="checkbox" id="subtract"><br>
-                    x<input type="checkbox" id="multiply"><br>
-                    /<input type="checkbox" id="divide"><br>
-                    ^2<input type="checkbox" id="square"><br>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div id="currentProblem">
 
-    </div>
-    <input type="number" inputmode="numeric" id="answer">
-    <ul id="problems">
-        
-    </ul>
+    <div id="container">
+        <ul id="problems"></ul>
+    
+        <div id="currentProblem"></div>
+    
+        <input type="number" inputmode="numeric" id="answer">
+    </div>   
 
     <script src="index.js"></script>
 </body>
