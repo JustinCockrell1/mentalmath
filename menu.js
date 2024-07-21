@@ -112,7 +112,7 @@ function init() {
     const optionDivs = document.querySelectorAll(".option-choice");
     for(let i = 0; i < optionDivs.length; i++) {
         optionDivs[i].onclick = function() {
-            window.location.href="/mentalmath.html?type=" + i;
+            window.location.href="/mentalmath/mentalmath.html?type=" + i;
             // start();
         }
     }

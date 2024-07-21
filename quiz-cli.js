@@ -6,7 +6,7 @@ function handleCli(message) {
 
 
 
-const quiz = new Quiz();
+const quiz = new Quiz(options);
 
 
 
