@@ -4,7 +4,8 @@
 const problemDisplay = document.getElementById("currentProblem");
 const pastDisplay = document.getElementById("problems");
 const answerInput = document.getElementById("answer");
-const optionsDiv = document.getElementById("options")
+const optionsDiv = document.getElementById("options");
+const alertsDiv = document.getElementById("alerts");
 
 const allOps = ["+","-", "/", "*"];
 
@@ -81,7 +82,16 @@ const possibleOptions = [
         num2Max:2,
         allowedOperators:["*"],
         same:true
-    },  
+    },
+    {
+        name:"2x2 multiplication",
+        num1Min:2,
+        num2Min:2,
+        num1Max:2,
+        num2Max:2,
+        allowedOperators:["*"],
+        same:false
+    },    
     {
         name:"multiplication tables",
         num1Min:1,
@@ -183,6 +193,7 @@ function endGame() {
     const timeTaken = currentTime - startTime;
     const seconds = timeTaken/1000;
     console.log("seconds", seconds);
+    alertsDiv.innerHTML+= `Well done. That took you ${seconds} seconds`;
 }
 
 
@@ -205,7 +216,8 @@ function checkAnswer(e) {
 
     }
     else {
-        console.log("you are 10 ply bud");
+        alertsDiv.innerHTML += "You are 10 ply bud";
+        // console.log("you are 10 ply bud");
         displayQuestion();
     }
 

@@ -1,4 +1,4 @@
-class Quiz {
+export default class Quiz {
     constructor() {
     this.options = {}
     }
@@ -7,6 +7,9 @@ class Quiz {
     }
     displayQuestion() {
 
+    }
+    checkAnswer() {
+        
     }
     
 }
