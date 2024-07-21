@@ -109,7 +109,7 @@ const possibleOptions = [
 function init() {
     for(let i = 0; i < possibleOptions.length; i++) {
         console.log(possibleOptions[i].name, i);
-        optionsDiv.innerHTML += `<a href=/mentalmath/mentalmath.html?type=${i}><button class="option-choice">${possibleOptions[i].name}</button></a>`
+        optionsDiv.innerHTML += `<a href=./mentalmath.html?type=${i}><button class="option-choice">${possibleOptions[i].name}</button></a>`
     }
     // const optionDivs = document.querySelectorAll(".option-choice");
     // for(let i = 0; i < optionDivs.length; i++) {
