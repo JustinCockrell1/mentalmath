@@ -152,10 +152,10 @@ function nextQuestion() {
 
     
     count++;
-    if(count>=20) {
-        endGame();
-        return;
-    }
+    // if(count>=20) {
+    //     endGame();
+    //     return;
+    // }
 
     
     n1 = genRandom(options.num1Min, options.num1Max);
