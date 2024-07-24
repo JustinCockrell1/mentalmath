@@ -203,6 +203,7 @@ answerInput.oninput = function(e) {
     const a = answerInput.value;
     if(a.length >= answer.length) {
         checkAnswer(a);
+        
     }
 }
 
@@ -214,12 +215,15 @@ function checkAnswer(e) {
 
     if(line==answer) {
         pastDisplay.innerHTML += `<li>${count}: ${n1} ${op} ${n2} = ${answer}</li>`;
+        pastDisplay.scrollTo({top:pastDisplay.scrollHeight, behavior:"smooth"});
+        answerInput.value = "";
         nextQuestion();
-
+      
     }
     else {
-        alertsDiv.innerHTML += "You are 10 ply bud";
+        // alertsDiv.innerHTML += "You are 10 ply bud";
         // console.log("you are 10 ply bud");
+        answerInput.value = "";
         displayQuestion();
     }
 
