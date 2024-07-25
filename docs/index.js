@@ -8,8 +8,15 @@ const pastDisplay = document.getElementById("problems");
 const answerInput = document.getElementById("answer");
 const optionsDiv = document.getElementById("options");
 const alertsDiv = document.getElementById("alerts");
+const sessionTotalDisplay = document.getElementById("sessionTotal");
+
+const totalIcon = document.getElementById("total-icon");
+
+const pointsIndicator = document.getElementById("messages");
 
 
+let sessionTotal = 0;
+let streak = 0;
 
 const allOps = ["+","-", "/", "*"];
 
@@ -69,7 +76,6 @@ function getRandomOp() {
 
 function nextQuestion() {
 
-    
     count++;
     // if(count>=20) {
     //     endGame();
@@ -105,7 +111,7 @@ function nextQuestion() {
 }
 
 function displayQuestion() {
-    problemDisplay.innerHTML = `${n1} ${op} ${n2} =`
+    problemDisplay.innerHTML = `${n1} ${op} ${n2}`
     // console.log(`${count}:`, n1, op, n2, "=");
 }
 
@@ -116,6 +122,7 @@ function endGame() {
     console.log("seconds", seconds);
     alertsDiv.innerHTML+= `Well done. That took you ${seconds} seconds`;
 }
+
 
 
 answerInput.oninput = function(e) {
@@ -133,19 +140,52 @@ function checkAnswer(e) {
     // console.log(line);
 
     if(line==answer) {
-        pastDisplay.innerHTML += `<li>${count}: ${n1} ${op} ${n2} = ${answer}</li>`;
+        problemDisplay.style.color = "green";
+        // totalIcon.style.color="green";
+        pastDisplay.innerHTML += `<li>${n1} ${op} ${n2} = ${answer}</li>`;
         pastDisplay.scrollTo({top:pastDisplay.scrollHeight, behavior:"smooth"});
         answerInput.value = "";
+        if(localStorage.getItem("totalCorrect"))
+        localStorage.setItem("totalCorrect", Number(localStorage.getItem("totalCorrect"))+1);
+        else {
+            localStorage.setItem("totalCorrect", 1);
+        }
+        
+        sessionTotal++;
+
+        pointsIndicator.classList.add("animate")
+        
+        streak++;
+        if(streak >10) {totalIcon.style.color="black"}
+        if(streak >20) {totalIcon.style.color="red"}
+        if(streak >30) {totalIcon.style.color="purple"}
+        if(streak >40) {totalIcon.style.color="gold"}
+        if(streak >50) {totalIcon.style.color="green"}
+        
+        if(sessionTotal==10) {
+            totalIcon.hidden = false;
+        }
+ 
         nextQuestion();
       
     }
     else {
+        problemDisplay.style.color = "red";
+        streak = 0;
+        // totalIcon.style.color="red";
+        totalIcon.hidden = true;
+      
         // alertsDiv.innerHTML += "You are 10 ply bud";
         // console.log("you are 10 ply bud");
         answerInput.value = "";
         displayQuestion();
     }
 
+    window.setTimeout(()=>{
+        problemDisplay.style.color = "black";
+        // totalIcon.style.color="black";
+    }, 300)
+    
     }
     else {
         const choice = Number(line);
@@ -184,6 +224,29 @@ function checkAnswer(e) {
 //     }
 // })
 
+pointsIndicator.onanimationend = function() {
+    pointsIndicator.classList.remove("animate");
+    sessionTotalDisplay.innerHTML = sessionTotal;
+}
+
+document.getElementById("pause").onclick = function() {
+    document.getElementById("menu").open = true;
+    // document.getElementById("seconds").innerHTML = `${seconds}`;
+}
+document.getElementById("resume").onclick = function() {
+    document.getElementById("menu").open = false;
+}
+document.getElementById("menu").onclick = function() {
+    document.getElementById("menu").open = false;
+}
+document.getElementById("restart").onclick = function() {
+    window.location.reload()
+}
+document.getElementById("menuArticle").onclick = function(e) {
+    e.stopPropagation();
+    // alert("pause");
+}
+
 function init() {
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('type');
@@ -192,6 +255,8 @@ function init() {
     // alert(myParam);
     answerInput.focus();
     start();
+
+
 }
 
 
@@ -202,6 +267,7 @@ count = 0;
 pastDisplay.innerHTML = "";
 startTime = Date.now();
 nextQuestion();
+
 }
 
 init()

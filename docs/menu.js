@@ -25,10 +25,13 @@ let options = {
 
 
 function init() {
+
+
+
     const types = ["Addition", "Subtraction", "Multiplication"]
 
     for(let i = 0; i < possibleOptions.length; i++) {
-        optionsDiv.innerHTML += `<h3>${types[i]}</h3>`;
+        optionsDiv.innerHTML += `<h4>${types[i]}</h4>`;
         let optionsText = "";
         optionsText += '<div class="options-box">';
         for(let j = 0; j < possibleOptions[i].length; j++) {
@@ -46,7 +49,11 @@ function init() {
     //     }
     // }
     console.log("choose an option");
+
+    document.getElementById("score").innerHTML = localStorage.getItem("totalCorrect");
 }
+
+
 
 document.getElementById("share-btn").onclick = function() {
     navigator.share({title:"Mental Math Game", text:"Come join your friends and play this game", url:window.location.href})

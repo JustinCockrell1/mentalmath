@@ -5,6 +5,13 @@ body {
     height:100vh;
 }
 
+#pageContainer {
+    width:100%;
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+}
+
 #container {
     max-width:20rem;
     display: flex;
@@ -24,14 +31,29 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border: 1px solid black;
 }
+#pageContainer #header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+dialog {
+    flex-direction: column;
+}
+dialog article {
+    align-items: center;
+    text-align: center;
+}
+
 ul li {
     align-self: flex-end;
 }
 #container #scrolldiv {
-    max-height: 13rem;
-    height: 13rem;
+    max-height: 9rem;
+    height: 9rem;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -40,7 +62,6 @@ ul li {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border: 1px solid red;
 }
 #container ul::-webkit-scrollbar {
     display: none;
@@ -50,8 +71,43 @@ ul li {
     list-style-type: none;
     /* text-decoration: none; */
 }
+#container ul li span {
+    color:lightgray;
+}
 
 #container input {
     font-size: 1.5rem;
     width: 7rem;
+}
+
+#messages {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 3rem;
+    color: green;
+}
+
+.animate {
+    opacity: 1;
+
+    animation: fade-left .5s forwards;
+
+}
+
+@keyframes fade-left {
+      0% {
+        left: 50%;
+        top: 50%;
+        opacity: 1;
+      }
+      90% {
+        top: 0;
+        left: 0;
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
 }
