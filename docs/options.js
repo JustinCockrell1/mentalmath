@@ -1,7 +1,7 @@
  const possibleOptions = [
     [
         {
-            name:"2 digit addition",
+            name:"2x2",
             num1Min:2,
             num2Min:2,
             num1Max:2,
@@ -10,7 +10,7 @@
             same:false
         },
         {
-            name:"3 digit addition",
+            name:"3x3",
             num1Min:3,
             num2Min:3,
             num1Max:3,
@@ -21,7 +21,7 @@
     ],
     [
         {
-            name:"2 digit subtraction",
+            name:"2x2",
             num1Min:2,
             num2Min:2,
             num1Max:2,
@@ -30,7 +30,7 @@
             same:false
         },   
         {
-            name:"3 digit subtraction",
+            name:"3x3",
             num1Min:3,
             num2Min:3,
             num1Max:3,
@@ -41,7 +41,7 @@
     ],
     [
         {
-            name:"2x1 multiplication",
+            name:"2x1",
             num1Min:2,
             num2Min:1,
             num1Max:2,
@@ -50,7 +50,7 @@
             same:false
         },  
         {
-            name:"3x1 multiplication",
+            name:"3x1",
             num1Min:3,
             num2Min:1,
             num1Max:3,
@@ -59,7 +59,7 @@
             same:false
         },  
         {
-            name:"squaring 2 digits",
+            name:"squares",
             num1Min:2,
             num2Min:2,
             num1Max:2,
@@ -68,7 +68,7 @@
             same:true
         },
         {
-            name:"2x2 multiplication",
+            name:"2x2",
             num1Min:2,
             num2Min:2,
             num1Max:2,
@@ -77,7 +77,7 @@
             same:false
         },    
         {
-            name:"multiplication tables",
+            name:"tables",
             num1Min:1,
             num2Min:1,
             num1Max:1,
