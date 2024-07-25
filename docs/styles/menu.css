@@ -1,19 +1,42 @@
+body {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
 #container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 40rem;
 }
 #container h1 {
     text-align: center;
+}
+#container #share-btn {
+    margin-top:2rem;
 }
 
 #options {
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items:left;
     justify-content: center;
-    
 }
+#options .options-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#options div > * {
+    margin-right:.2rem;
+    margin-bottom:.2rem;
+}
+#options h3 {
+    margin-bottom:.2rem;
+}
+
 
 /* #options button {
     font-size: 1.5rem;
