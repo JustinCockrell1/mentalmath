@@ -33,7 +33,7 @@ function init() {
         optionsText += '<div class="options-box">';
         for(let j = 0; j < possibleOptions[i].length; j++) {
         console.log(possibleOptions[i].name, i);
-        optionsText += `<a href=./mentalmath.html?type=${i}><button class="option-choice">${possibleOptions[i][j].name}</button></a>`
+        optionsText += `<a href=./mentalmath.html?type=${i}-${j}><button class="option-choice">${possibleOptions[i][j].name}</button></a>`
         }
         optionsText+="</div>";
         optionsDiv.innerHTML+=optionsText;

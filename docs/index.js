@@ -187,7 +187,8 @@ function checkAnswer(e) {
 function init() {
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('type');
-    options = possibleOptions[myParam];
+    const indexes = myParam.split("-");
+    options = possibleOptions[Number(indexes[0])][Number(indexes[1])];
     // alert(myParam);
     answerInput.focus();
     start();
