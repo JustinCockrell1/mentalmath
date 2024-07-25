@@ -8,14 +8,19 @@ function login(req:Request, res:Response) {
 interface RegisterRequest extends Request {
     body: {
         name:string,
+        email:string,
+        password:string,
     }
 }
 
 
 
 function register(req:RegisterRequest, res:Response) {
-    const user = req.body.name;
-    db.users = {}
+    const user = req.body;
+    db.users.push(user);
+    console.log(db.users);
+    res.status(200).send();
+    
 }
 function currentUser(req:Request, res:Response) {
   

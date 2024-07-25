@@ -3,6 +3,9 @@ import authentication from "./controllers/authentication.js";
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+
 app.listen(3000, ()=>{
     console.log("Server started on 3000");
     

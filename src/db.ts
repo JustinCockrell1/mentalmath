@@ -1,23 +1,7 @@
-const db:any = {};
+const db:any = {
+    users: [],
+};
 
-class Database {
-    data:any;
-    constructor() {
-        this.data = {};
-    }
 
-    get() {
-
-    }
-    set() {
-
-    }
-    add() {
-
-    }
-    delete() {
-
-    }
-}
 
 export default db;

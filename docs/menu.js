@@ -4,6 +4,8 @@
 // const problemDisplay = document.getElementById("currentProblem");
 // const pastDisplay = document.getElementById("problems");
 // const answerInput = document.getElementById("answer");
+import possibleOptions from "./options.js";
+
 const optionsDiv = document.getElementById("options");
 const alertsDiv = document.getElementById("alerts");
 
@@ -21,95 +23,20 @@ let options = {
 
 // let started = false;
 
-const possibleOptions = [
-    {
-        name:"2 digit addition",
-        num1Min:2,
-        num2Min:2,
-        num1Max:2,
-        num2Max:2,
-        allowedOperators:["+"],
-        same:false
-    },
-    {
-        name:"3 digit addition",
-        num1Min:3,
-        num2Min:3,
-        num1Max:3,
-        num2Max:3,
-        allowedOperators:["+"],
-        same:false
-    },   
-    {
-        name:"2 digit subtraction",
-        num1Min:2,
-        num2Min:2,
-        num1Max:2,
-        num2Max:2,
-        allowedOperators:["-"],
-        same:false
-    },   
-    {
-        name:"3 digit subtraction",
-        num1Min:3,
-        num2Min:3,
-        num1Max:3,
-        num2Max:3,
-        allowedOperators:["-"],
-        same:false
-    },  
-    {
-        name:"2x1 multiplication",
-        num1Min:2,
-        num2Min:1,
-        num1Max:2,
-        num2Max:1,
-        allowedOperators:["*"],
-        same:false
-    },  
-    {
-        name:"3x1 multiplication",
-        num1Min:3,
-        num2Min:1,
-        num1Max:3,
-        num2Max:1,
-        allowedOperators:["*"],
-        same:false
-    },  
-    {
-        name:"squaring 2 digits",
-        num1Min:2,
-        num2Min:2,
-        num1Max:2,
-        num2Max:2,
-        allowedOperators:["*"],
-        same:true
-    },
-    {
-        name:"2x2 multiplication",
-        num1Min:2,
-        num2Min:2,
-        num1Max:2,
-        num2Max:2,
-        allowedOperators:["*"],
-        same:false
-    },    
-    {
-        name:"multiplication tables",
-        num1Min:1,
-        num2Min:1,
-        num1Max:1,
-        num2Max:1,
-        allowedOperators:["*"],
-        same:false
-    },  
-]
-
 
 function init() {
+    const types = ["Addition", "Subtraction", "Multiplication"]
+
     for(let i = 0; i < possibleOptions.length; i++) {
+        optionsDiv.innerHTML += `<h3>${types[i]}</h3>`;
+        let optionsText = "";
+        optionsText += '<div class="options-box">';
+        for(let j = 0; j < possibleOptions[i].length; j++) {
         console.log(possibleOptions[i].name, i);
-        optionsDiv.innerHTML += `<a href=./mentalmath.html?type=${i}><button class="option-choice">${possibleOptions[i].name}</button></a>`
+        optionsText += `<a href=./mentalmath.html?type=${i}><button class="option-choice">${possibleOptions[i][j].name}</button></a>`
+        }
+        optionsText+="</div>";
+        optionsDiv.innerHTML+=optionsText;
     }
     // const optionDivs = document.querySelectorAll(".option-choice");
     // for(let i = 0; i < optionDivs.length; i++) {
@@ -121,7 +48,9 @@ function init() {
     console.log("choose an option");
 }
 
-
+document.getElementById("share-btn").onclick = function() {
+    navigator.share({title:"Mental Math Game", text:"Come join your friends and play this game", url:window.location.href})
+}
 
 // function start() {
 // started = true;
